@@ -3,64 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verdain: Dragon's Academy</title>
+    <title>Verdain: Dragon's Academy Database</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Single Page Application View Management */
+        .spa-view {
+            display: none; /* Hide all views by default */
+        }
+        .spa-view.active-view {
+            display: block; /* Only show the view with the active class */
+        }
+    </style>
 </head>
 <body>
+
     <!-- Volcanic Ash Layer -->
     <div class="ash-overlay"></div>
 
+    <!-- Global Navigation Header (Stays constant, never reloads) -->
     <header class="nav-bar">
-        <!-- The rest of your navbar code remains completely unchanged below this -->
-
-    <header class="nav-bar">
-        <div class="logo">VERDAIN ARCHIVES</div>
+        <div class="logo magma-glow">VERDAIN ARCHIVES</div>
         <nav class="nav-links">
-            <a href="index.html" class="active">HOME</a>
-            <a href="characters.html">ACADEMY PROSPECTS</a>
-            <a href="lore.html">ACADEMY LORE</a>
+            <!-- JavaScript-driven navigation links instead of raw file jumps -->
+            <a href="#" class="nav-tab active" onclick="switchView('home-view', this)">HOME</a>
+            <a href="#" class="nav-tab" onclick="switchView('cadets-view', this)">CADETS</a>
+            <a href="#" class="nav-tab" onclick="switchView('lore-view', this)">ACADEMY LORE</a>
         </nav>
     </header>
 
-    <main class="hero-container">
-        <h1 class="story-title magma-glow">VERDAIN</h1>
-        <p class="story-subtitle">"Enter at twenty. Graduate, or die."<br><br>Cut into the heart of a jagged, storm-swept volcano lies a brutal military academy built of ancient black basalt and powered by raw spiritual energy.</p>
-        <a href="characters.html" class="enter-btn">ACCESS PROSPECT DATABASE</a>
-    </main>
-
-    <!-- Hidden Audio Loop Engine -->
-    <audio id="bg-music" src="assets/music/webtheme.mp3" loop></audio>
-
-    <!-- Floating Interface Button -->
+    <!-- Hidden Audio Loop Engine (Never stops or skips because the page never reloads) -->
+    <audio id="bg-music" src="assets/theme.mp3" loop></audio>
     <button class="audio-toggle" id="audio-btn">🔊 SOUND: OFF</button>
 
-    <!-- Audio Controller Logic -->
+    <!-- ========================================================= -->
+    <!-- VIEW 1: HOME SCREEN                                       -->
+    <!-- ========================================================= -->
+    <main id="home-view" class="spa-view active-view">
+        <div class="hero-container">
+            <h1 class="story-title magma-glow">VERDAIN</h1>
+            <p class="story-subtitle">"Enter at twenty. Graduate, or die."<br><br>Cut into the heart of a jagged, storm-swept volcano lies a brutal military academy built of ancient black basalt and powered by raw spiritual energy.</p>
+            <a href="#" class="enter-btn" onclick="switchView('cadets-view', document.querySelectorAll('.nav-tab')[1])">ACCESS ROSTER DATABASE</a>
+        </div>
+    </main>
+
+    <!-- ========================================================= -->
+    <!-- VIEW 2: CADET & DRAGON ROSTER                             -->
+    <!-- ========================================================= -->
+    <main id="cadets-view" class="spa-view">
+        <div class="content-wrapper">
+            <h2 class="magma-glow">Academy Cadets</h2>
+            <div class="grid-container" style="margin-bottom: 60px;">
+                
+                <!-- Darryn -->
+                <div class="card">
+                    <img src="assets/characters/darryn.jpg" alt="Darryn Portrait" class="card-img">
+                    <div class="card-info">
+                        <h3 class="card-title">Darryn</h3>
+                        <div class="card-subtitle">Wall of Stoicism</div>
+                        <p><strong>Appearance:</strong> Male, tall, wide, pure muscle. Black hair, orange eyes.</p>
+                        <p><strong>Personality:</strong> Abrasive, quiet, strict, stoic.</p>
+                        <p><strong>Facet:</strong> "Hardening" (Turns skin into a jagged, unbreakable defensive/offensive material).</p>
+                        <p><strong>Bonded Dragon:</strong> Haƃruṿisḩ.</p>
+                    </div>
+                </div>
+
+                <!-- Scro -->
+                <div class="card">
+                    <img src="assets/characters/scro.jpg" alt="Scro Portrait" class="card-img">
+                    <div class="card-info">
+                        <h3 class="card-title">Scro</h3>
+                        <div class="card-subtitle">Convivial Jokester</div>
+                        <p><strong>Appearance:</strong> Male, medium height, slender. Shaggy auburn hair, blue eyes.</p>
+                        <p><strong>Personality:</strong> Playful, rule-breaking comedic relief, but serious and lethal when jokes end.</p>
+                        <p><strong>Facet:</strong> "Duality" (Manipulates light for laser bursts/illumination, and shadows as solid weapons).</p>
+                        <p><strong>Bonded Dragon:</strong> Ŷohṿiłeh.</p>
+                    </div>
+                </div>
+
+                <!-- Airuei -->
+                <div class="card">
+                    <img src="assets/characters/airuei.jpg" alt="Airuei Portrait" class="card-img">
+                    <div class="card-info">
+                        <h3 class="card-title">Airuei</h3>
+                        <div class="card-subtitle">Dormant Terror</div>
+                        <p><strong>Appearance:</strong> Female, petite, choppy silver hair, yellow eyes.</p>
+                        <p><strong>Personality:</strong> Shy, perpetually sleepy, avoids participation, but terrifyingly powerful when active.</p>
+                        <p><strong>Facet:</strong> "Joule" (Manipulates, shapes, and transfers kinetic/motion energy of physical objects).</p>
+                        <p><strong>Bonded Dragon:</strong> Heḯmøų.</p>
+                    </div>
+                </div>
+
+                <!-- Chrys -->
+                <div class="card">
+                    <img src="assets/characters/chrys.jpg" alt="Chrys Portrait" class="card-img">
+                    <div class="card-info">
+                        <h3 class="card-title">Chrys</h3>
+                        <div class="card-subtitle">Volatile Tsundere</div>
+                        <p><strong>Appearance:</strong> Female, average height, platinum blonde hair, green eyes.</p>
+                        <p><strong>Personality:</strong> Loud, vulgar, boisterous, classic tsundere.</p>
+                        <p><strong>Facet:</strong> "Bleed" (Oozes blood through pores, hardening it instantly into solid weapons/shapes).</p>
+                        <p><strong>Bonded Dragon:</strong> Ƒogǎḩr.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <h2 class="magma-glow">Bonded Dragons</h2>
+            <div class="grid-container">
+                
+                <!-- Haƃruṿisḩ -->
+                <div class="card">
+                    <img src="assets/characters/habruvish.jpg" alt="Haƃruṿisḩ Portrait" class="card-img">
+                    <div class="card-info">
+                        <h3 class="card-title">Haƃruṿisḩ</h3>
+                        <div class="card-subtitle">The Bastion of Iron Law</div>
+                        <p><strong>Appearance:</strong> Male, large, obsidian-colored, stone like scales.</p>
+                        <p><strong>Personality:</strong> Strategic, terse dragon with an unyielding appreciation and demand for ancient dragon code, deep resentment for outbursts and unpredictability, and is always three steps ahead.</p>
+                        <p><strong>Bonded Human:</strong> Darryn.</p>
+                    </div>
+                </div>
+
+                <!-- Ŷohṿiłeh -->
+                <div class="card">
+                    <img src="assets/characters/yohvileh.jpg" alt="Ŷohṿiłeh Portrait" class="card-img">
+                    <div class="card-info">
+                        <h3 class="card-title">Ŷohṿiłeh</h3>
+                        <div class="card-subtitle">The Carefree Sentinel</div>
+                        <p><strong>Appearance:</strong> Female, average size, slate gray, flat rounded scales.</p>
+                        <p><strong>Personality:</strong> Jovial dragon who smothers loved ones with physical affection, is overly playful, feels genuinely bad by upsetting others, and values her bond over everything.</p>
+                        <p><strong>Bonded Human:</strong> Scro.</p>
+                    </div>
+                </div>
+
+                <!-- Heḯmøų -->
+                <div class="card">
+                    <img src="assets/characters/heimou.jpg" alt="Heḯmøų Portrait" class="card-img">
+                    <div class="card-info">
+                        <h3 class="card-title">Heḯmøų</h3>
+                        <div class="card-subtitle">The Chronicler of Cosmic Order</div>
+                        <p><strong>Appearance:</strong> Female, small, bright green, resembles an owl with feather-like scales.</p>
+                        <p><strong>Personality:</strong> Scholarly dragon with intense curiosity, appreciation for those with high intellect, and is quietly arrogant of brutes and fools.</p>
+                        <p><strong>Bonded Human:</strong> Airuei.</p>
+                    </div>
+                </div>
+
+                <!-- Ƒogǎḩr -->
+                <div class="card">
+                    <img src="assets/characters/fogahr.jpg" alt="Ƒogǎḩr Portrait" class="card-img">
+                    <div class="card-info">
+                        <h3 class="card-title">Ƒogǎḩr</h3>
+                        <div class="card-subtitle">The Scourge of Absolute Submission</div>
+                        <p><strong>Appearance:</strong> Male, medium size, intimidating crimson, massive horns, sharp jutting scales.</p>
+                        <p><strong>Personality:</strong> Combative dragon with dominating presence, zero public vulnerability, and is a vocal bully using his deep vocals and snapping jaws.</p>
+                        <p><strong>Bonded Human:</strong> Chrys.</p>
+                    </div>
+                </div>
+
+                <!-- Ⱥhvỉęnøh -->
+                <div class="card" style="border-color: #c5a880;">
+                    <img src="assets/characters/ahvienoh.jpg" alt="Ⱥhvỉęnøh Portrait" class="card-img">
+                    <div class="card-info">
+                        <h3 class="card-title">Ⱥhvỉęnøh</h3>
+                        <div class="card-subtitle" style="color: #c5a880;">The Unwritten Ancient</div>
+                        <p><strong>Appearance:</strong> Royal blue, average size. Large, bat-like wings featuring twin thumb claws, two vertically stacked mouths.</p>
+                        <p><strong>Bonded Human:</strong> User.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- ========================================================= -->
+    <!-- VIEW 3: LORE & TIMELINE                                   -->
+    <!-- ========================================================= -->
+    <main id="lore-view" class="spa-view">
+        <div class="content-wrapper">
+            <h2 class="magma-glow">Academy Operations & Codex</h2>
+
+            <!-- Active Chronology Widget -->
+            <div class="calendar-box">
+                <h3>CURRENT SYSTEM TIMELINE</h3>
+                <p><strong>Starting Date:</strong> Age 749, Autumnus - Day 1</p>
+                <p><strong>Current Time:</strong> 09:00 AM</p>
+                <p style="font-size: 0.85rem; color: #a5a096; margin-top: 10px;">
+                    *Note: Strict 12-Hour Clock. Years feature 4 equal 90-day seasons (Vēr, Aestas, Autumnus, Hiems). Age increments on the dawn of Vēr Day 1.*
+                </p>
+            </div>
+
+            <div class="grid-container">
+                
+                <!-- Hierarchy -->
+                <div class="card">
+                    <div class="card-info">
+                        <h3 class="card-title">The Three-Tiered Hierarchy</h3>
+                        <p><strong>Fang Class:</strong> The top tier. Reserved exclusively for elite cadets who demonstrate absolute tactical lethality.</p>
+                        <p><strong>Wing Class:</strong> The middle tier. Stabilizing core of the academy's fighting force.</p>
+                        <p><strong>Talon Class:</strong> The lower tier. Constantly at risk of being weeded out.</p>
+                    </div>
+                </div>
+
+                <!-- Bonding Lore -->
+                <div class="card">
+                    <div class="card-info">
+                        <h3 class="card-title">Soul Resonance & Bonding</h3>
+                        <p>Occurs immediately following orientation. Bonding is a primal, resonating strike inside the core of the soul.</p>
+                        <p>Neither human nor dragon consciously makes the choice; the magic aligns naturally or destroys the candidate. The weak are dropped directly into the bottomless abyss beneath the basalt floors.</p>
+                    </div>
+                </div>
+
+                <!-- Technology -->
+                <div class="card">
+                    <div class="card-info">
+                        <h3 class="card-title">World Advancement Tech</h3>
+                        <p><strong>Environment:</strong> A high-fantasy setting of sprawling stone castles, rugged military barracks, and remote merchant villages.</p>
+                        <p><strong>Power Systems:</strong> Fused exclusively with spiritual and magnetic technology powered by raw, thrumming volcanic fonts. Traditional military/ballistic technology advancements do not exist.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- ========================================================= -->
+    <!-- JAVASCRIPT CONTROLLERS (Navigation & Persistent Audio)     -->
+    <!-- ========================================================= -->
     <script>
+        // 1. Single Page Application Tab Switcher
+        function switchView(viewId, targetElement) {
+            // Hide all separate sections
+            const views = document.querySelectorAll('.spa-view');
+            views.forEach(view => view.classList.remove('active-view'));
+            
+            // Show target section instantly
+            const targetView = document.getElementById(viewId);
+            if (targetView) {
+                targetView.classList.add('active-view');
+            }
+
+            // Remove active underline styling from navbar links
+            const tabs = document.querySelectorAll('.nav-links a');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Handle direct tab highlighting vs. landing page layout links
+            if (targetElement && targetElement.classList) {
+                if (targetElement.classList.contains('nav-tab')) {
+                    targetElement.classList.add('active');
+                } else if (viewId === 'cadets-view') {
+                    // Highlight the Cadets tab if redirected via the central button
+                    const cadetsTab = document.querySelector('.nav-links a:nth-child(2)');
+                    if (cadetsTab) cadetsTab.classList.add('active');
+                }
+            }
+        }
+
+        // 2. Persistent Audio Logic (Never skips because pages never change)
         const music = document.getElementById('bg-music');
         const btn = document.getElementById('audio-btn');
 
-        // Check if the music was already running on a previous page shift
-        if (localStorage.getItem('musicPlaying') === 'true') {
-            music.play().then(() => {
-                btn.innerText = "🔊 SOUND: ON";
-            }).catch(() => {
-                // If browser blocks autostart, reset memory state
-                localStorage.setItem('musicPlaying', 'false');
-            });
-        }
-
-        // Toggle sound playback state on mouse click
         btn.addEventListener('click', () => {
             if (music.paused) {
                 music.play();
                 btn.innerText = "🔊 SOUND: ON";
-                localStorage.setItem('musicPlaying', 'true');
             } else {
                 music.pause();
                 btn.innerText = "🔊 SOUND: OFF";
-                localStorage.setItem('musicPlaying', 'false');
             }
         });
     </script>
+
 </body>
 </html>
