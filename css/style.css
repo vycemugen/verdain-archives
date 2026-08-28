@@ -154,3 +154,24 @@ h2 {
     color: #c5a880;
     margin-bottom: 10px;
 }
+
+/* Magma Glow Animation Definition */
+@keyframes magmaPulse {
+    0% {
+        color: #ff3700; /* Deep Ember */
+        text-shadow: 0 0 4px #ff3700, 0 0 10px #ff5500, 0 0 20px #ffaa00;
+    }
+    50% {
+        color: #ff9d00; /* Molten Gold Peak */
+        text-shadow: 0 0 8px #ff6a00, 0 0 20px #ff9d00, 0 0 40px #ffea00, 0 0 60px #ff5500;
+    }
+    100% {
+        color: #ff3700; /* Loop back to Deep Ember */
+        text-shadow: 0 0 4px #ff3700, 0 0 10px #ff5500, 0 0 20px #ffaa00;
+    }
+}
+
+/* Apply Animation to Specific Classes */
+.magma-glow {
+    animation: magmaPulse 4s infinite ease-in-out;
+}
