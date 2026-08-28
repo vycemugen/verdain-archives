@@ -1,3 +1,43 @@
+/* 1. Register Main Magma Headers Font */
+@font-face {
+    font-family: 'MagmaHeaderFont'; 
+    src: url('../fonts/magma-header.ttf') format('truetype');
+    /* Note: If your font file ends in .otf, change format('truetype') to format('opentype') */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 2. Register Darryn's Signature Font */
+@font-face {
+    font-family: 'DarrynSignature';
+    src: url('../fonts/ArchiveScribble.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 3. Register Scro's Signature Font */
+@font-face {
+    font-family: 'ScroSignature';
+    src: url('../fonts/maxine.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 4. Register Airuei's Signature Font */
+@font-face {
+    font-family: 'AirueiSignature';
+    src: url('../fonts/CrustSig.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 5. Register Chrys's Signature Font */
+@font-face {
+    font-family: 'ChrysSignature';
+    src: url('../fonts/The Ballpoint.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Base Reset and Layout */
 * {
     margin: 0;
@@ -215,4 +255,20 @@ h2 {
         transform: translateY(-40px) translateX(0) scale(1);
         filter: brightness(1);
     }
+}
+
+.story-title, h2 {
+    font-family: 'MagmaHeaderFont', 'Georgia', serif; /* Falls back to Georgia if font fails to load */
+}
+.signature {
+    font-size: 1.6rem;
+    color: #ffaa00; /* Amber/gold signature ink tint */
+    margin-top: 15px;
+    text-align: right; /* Aligns signature neatly to the bottom-right corner of the card */
+    opacity: 0.8;
+}
+
+/* Assign unique signatures to specific fonts */
+.darryn-sig {
+    font-family: 'DarrynSignature', cursive;
 }
