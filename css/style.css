@@ -5,12 +5,15 @@
     box-sizing: border-box;
 }
 body {
-    background-color: #0d0d11; /* Dark basalt rock color */
-    color: #e0dcd3; /* Parchment white text */
-    font-family: 'Georgia', serif; /* High fantasy font feel */
+    background-color: #0b0b0e; /* Dark basalt bedrock */
+    color: #e0dcd3;
+    font-family: 'Georgia', serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    position: relative;
+    /* Optional: If you have a volcano background image, link it here */
+    background-image: radial-gradient(circle at center, rgba(11, 11, 14, 0.4), #000000);
 }
 
 /* Global Navigation Bar */
@@ -174,4 +177,42 @@ h2 {
 /* Apply Animation to Specific Classes */
 .magma-glow {
     animation: magmaPulse 4s infinite ease-in-out;
+}
+
+/* Volcanic Ash Overlay Container */
+.ash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Prevents the layer from blocking button clicks */
+    z-index: -1; /* Keeps the ash behind text but in front of the base background image */
+    opacity: 0.15; /* Subtle opacity so it doesn't distract from reading text */
+    
+    /* Creates a fine ash particle texture using CSS gradients */
+    background-image: 
+        radial-gradient(circle, #ff5500 1px, transparent 1px),
+        radial-gradient(circle, #ffaa00 1.5px, transparent 1.5px);
+    background-size: 40px 40px, 60px 60px;
+    background-position: 0 0, 20px 30px;
+    
+    /* Attaches the ash movement animation */
+    animation: driftAsh 12s infinite linear;
+}
+
+/* Ash Drifting and Pulsing Keyframes */
+@keyframes driftAsh {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        filter: brightness(1);
+    }
+    50% {
+        transform: translateY(-20px) translateX(15px) scale(1.05);
+        filter: brightness(1.8); /* Pulses brighter like hot embers catching wind */
+    }
+    100% {
+        transform: translateY(-40px) translateX(0) scale(1);
+        filter: brightness(1);
+    }
 }
