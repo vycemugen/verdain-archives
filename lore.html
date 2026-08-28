@@ -68,5 +68,39 @@
         </div>
     </main>
 
+    <!-- Hidden Audio Loop Engine -->
+    <audio id="bg-music" src="assets/music/webtheme.mp3" loop></audio>
+
+    <!-- Floating Interface Button -->
+    <button class="audio-toggle" id="audio-btn">🔊 SOUND: OFF</button>
+
+    <!-- Audio Controller Logic -->
+    <script>
+        const music = document.getElementById('bg-music');
+        const btn = document.getElementById('audio-btn');
+
+        // Check if the music was already running on a previous page shift
+        if (localStorage.getItem('musicPlaying') === 'true') {
+            music.play().then(() => {
+                btn.innerText = "🔊 SOUND: ON";
+            }).catch(() => {
+                // If browser blocks autostart, reset memory state
+                localStorage.setItem('musicPlaying', 'false');
+            });
+        }
+
+        // Toggle sound playback state on mouse click
+        btn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                btn.innerText = "🔊 SOUND: ON";
+                localStorage.setItem('musicPlaying', 'true');
+            } else {
+                music.pause();
+                btn.innerText = "🔊 SOUND: OFF";
+                localStorage.setItem('musicPlaying', 'false');
+            }
+        });
+    </script>
 </body>
 </html>
